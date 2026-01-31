@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncLife - Smart Lifestyle Automation</title>
+    <link rel="stylesheet" href="../style/main.css">
+    <style>
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #005f73 0%, #0a9396 50%, #001219 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+            text-shadow: 2px 2px 4px rgba(0, 18, 25, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #e9d8a6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #005f73;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(148, 210, 189, 0.1) 0%, rgba(233, 216, 166, 0.1) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 2px solid #94d2bd;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(10, 147, 150, 0.2);
+            border-color: #0a9396;
+            background: linear-gradient(135deg, rgba(10, 147, 150, 0.1) 0%, rgba(148, 210, 189, 0.1) 100%);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #005f73;
+        }
+
+        .feature-card p {
+            color: #001219;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(10, 147, 150, 0.05) 0%, rgba(148, 210, 189, 0.05) 100%);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #0a9396 0%, #005f73 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+            border: 3px solid #94d2bd;
+            box-shadow: 0 4px 6px rgba(10, 147, 150, 0.2);
+        }
+
+        .step h3 {
+            color: #005f73;
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            color: #001219;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #001219 0%, #005f73 50%, #0a9396 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 18, 25, 0.3);
+        }
+
+        .cta p {
+            color: #e9d8a6;
+            font-size: 1.2rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">⚡ SyncLife</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="Login.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Your AI-Powered Life Assistant</h1>
+            <p>Track expenses, manage receipts, get smart recommendations, and plan trips — all in one place</p>
+            <div class="hero-buttons">
+                <a href="Register.html" class="btn btn-primary">Get Started Free</a>
+                <a href="dashboard.html" class="btn btn-secondary">View Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2 class="section-title">Powerful Features</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Smart Expense Tracking</h3>
+                <p>Automatically categorize and track your spending with AI-powered insights</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📄</div>
+                <h3>Receipt Scanner</h3>
+                <p>Upload receipts and let AI extract all important information instantly</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛍️</div>
+                <h3>Product Recommendations</h3>
+                <p>Get personalized shopping suggestions that fit your budget and lifestyle</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✈️</div>
+                <h3>Travel Planner</h3>
+                <p>Discover destinations within your budget based on your preferences</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Upload Receipts</h3>
+                <p>Snap a photo or upload your receipts</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>AI Analysis</h3>
+                <p>Our AI extracts and categorizes expenses</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Get Insights</h3>
+                <p>View spending patterns and predictions</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Smart Decisions</h3>
+                <p>Receive personalized recommendations</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Take Control?</h2>
+            <p>Join thousands of users managing their lifestyle smarter</p>
+            <a href="Register.html" class="btn btn-primary" style="margin-top: 1rem;">Start Your Journey</a>
+        </div>
+    </section>
+</body>
+</html>

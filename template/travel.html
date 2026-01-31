@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Planner - SyncLife</title>
+    <link rel="stylesheet" href="../style/main.css">
+    <link rel="stylesheet" href="../style/dashboard.css">
+    <link rel="stylesheet" href="../style/components.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-logo">⚡ SyncLife</div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">📊 Dashboard</a></li>
+                <li><a href="expenses.html">💰 Expenses</a></li>
+                <li><a href="receipts.html">📄 Receipts</a></li>
+                <li><a href="products.html">🛍️ Shopping</a></li>
+                <li><a href="travel.html" class="active">✈️ Travel</a></li>
+                <li><a href="profile.html">⚙️ Settings</a></li>
+                <li><a href="index.html">🚪 Logout</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Intelligent Travel Planner</h1>
+                <p class="text-secondary">Plan your next trip with AI-powered recommendations</p>
+            </div>
+
+            <div class="card mb-3">
+                <h2 class="card-header">Trip Preferences</h2>
+                <div class="slider-container">
+                    <label class="form-label">Budget Range: ₹<span id="budget-value">25,000</span></label>
+                    <input type="range" class="slider" min="5000" max="100000" step="5000" value="25000" 
+                           onchange="document.getElementById('budget-value').textContent = this.value">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Trip Duration</label>
+                    <select class="form-select">
+                        <option>Weekend (2-3 days)</option>
+                        <option>Short Break (4-5 days)</option>
+                        <option>Week Long (7 days)</option>
+                        <option>Extended (10+ days)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Select Your Interests</label>
+                    <div class="tag-group">
+                        <div class="tag active">🏖️ Beach</div>
+                        <div class="tag">⛰️ Adventure</div>
+                        <div class="tag active">🍜 Food</div>
+                        <div class="tag">🏛️ Culture</div>
+                        <div class="tag">🛍️ Shopping</div>
+                        <div class="tag">🎭 Entertainment</div>
+                        <div class="tag">🧘 Wellness</div>
+                        <div class="tag">📸 Photography</div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary">Find Destinations</button>
+            </div>
+
+            <h2 class="mb-2">Recommended Destinations (AI Prototype)</h2>
+            <div class="destination-grid">
+                <div class="destination-card">
+                    <div class="destination-image">🏖️</div>
+                    <div class="destination-info">
+                        <div class="destination-name">Goa</div>
+                        <p class="text-secondary">Perfect beach getaway with amazing food scene</p>
+                        <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+                            <span><strong>Est. Cost:</strong> ₹22,000</span>
+                            <span class="badge badge-success">Within Budget</span>
+                        </div>
+                        <div class="destination-tags">
+                            <span class="badge badge-primary">Beach</span>
+                            <span class="badge badge-primary">Food</span>
+                            <span class="badge badge-primary">Nightlife</span>
+                        </div>
+                        <button class="btn btn-primary btn-sm mt-2" style="width: 100%;">Plan Trip</button>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="destination-image">⛰️</div>
+                    <div class="destination-info">
+                        <div class="destination-name">Manali</div>
+                        <p class="text-secondary">Mountain adventure with scenic beauty</p>
+                        <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+                            <span><strong>Est. Cost:</strong> ₹28,000</span>
+                            <span class="badge badge-warning">Slightly Over</span>
+                        </div>
+                        <div class="destination-tags">
+                            <span class="badge badge-primary">Adventure</span>
+                            <span class="badge badge-primary">Nature</span>
+                            <span class="badge badge-primary">Trekking</span>
+                        </div>
+                        <button class="btn btn-primary btn-sm mt-2" style="width: 100%;">Plan Trip</button>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="destination-image">🏛️</div>
+                    <div class="destination-info">
+                        <div class="destination-name">Jaipur</div>
+                        <p class="text-secondary">Rich culture and heritage exploration</p>
+                        <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+                            <span><strong>Est. Cost:</strong> ₹18,500</span>
+                            <span class="badge badge-success">Great Deal</span>
+                        </div>
+                        <div class="destination-tags">
+                            <span class="badge badge-primary">Culture</span>
+                            <span class="badge badge-primary">Food</span>
+                            <span class="badge badge-primary">Shopping</span>
+                        </div>
+                        <button class="btn btn-primary btn-sm mt-2" style="width: 100%;">Plan Trip</button>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="destination-image">🌊</div>
+                    <div class="destination-info">
+                        <div class="destination-name">Andaman Islands</div>
+                        <p class="text-secondary">Pristine beaches and water sports</p>
+                        <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+                            <span><strong>Est. Cost:</strong> ₹45,000</span>
+                            <span class="badge badge-danger">Over Budget</span>
+                        </div>
+                        <div class="destination-tags">
+                            <span class="badge badge-primary">Beach</span>
+                            <span class="badge badge-primary">Adventure</span>
+                            <span class="badge badge-primary">Diving</span>
+                        </div>
+                        <button class="btn btn-secondary btn-sm mt-2" style="width: 100%;">View Details</button>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="destination-image">🕌</div>
+                    <div class="destination-info">
+                        <div class="destination-name">Kerala</div>
+                        <p class="text-secondary">Backwaters, beaches, and cuisine</p>
+                        <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+                            <span><strong>Est. Cost:</strong> ₹24,000</span>
+                            <span class="badge badge-success">Perfect Match</span>
+                        </div>
+                        <div class="destination-tags">
+                            <span class="badge badge-primary">Beach</span>
+                            <span class="badge badge-primary">Food</span>
+                            <span class="badge badge-primary">Wellness</span>
+                        </div>
+                        <button class="btn btn-primary btn-sm mt-2" style="width: 100%;">Plan Trip</button>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <div class="destination-image">🏔️</div>
+                    <div class="destination-info">
+                        <div class="destination-name">Ladakh</div>
+                        <p class="text-secondary">Ultimate adventure destination</p>
+                        <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+                            <span><strong>Est. Cost:</strong> ₹38,000</span>
+                            <span class="badge badge-warning">Premium</span>
+                        </div>
+                        <div class="destination-tags">
+                            <span class="badge badge-primary">Adventure</span>
+                            <span class="badge badge-primary">Photography</span>
+                            <span class="badge badge-primary">Biking</span>
+                        </div>
+                        <button class="btn btn-secondary btn-sm mt-2" style="width: 100%;">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

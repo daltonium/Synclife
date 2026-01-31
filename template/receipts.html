@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipts - SyncLife</title>
+    <link rel="stylesheet" href="../style/main.css">
+    <link rel="stylesheet" href="../style/dashboard.css">
+    <link rel="stylesheet" href="../style/components.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-logo">⚡ SyncLife</div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">📊 Dashboard</a></li>
+                <li><a href="expenses.html">💰 Expenses</a></li>
+                <li><a href="receipts.html" class="active">📄 Receipts</a></li>
+                <li><a href="products.html">🛍️ Shopping</a></li>
+                <li><a href="travel.html">✈️ Travel</a></li>
+                <li><a href="profile.html">⚙️ Settings</a></li>
+                <li><a href="index.html">🚪 Logout</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Receipt Analyzer</h1>
+                <p class="text-secondary">Upload receipts and let AI extract information</p>
+            </div>
+
+            <div class="upload-box">
+                <div class="upload-icon">📤</div>
+                <h3>Drag & Drop Receipt Here</h3>
+                <p class="text-secondary">or click to browse</p>
+                <p class="text-secondary" style="font-size: 0.875rem; margin-top: 1rem;">Supported formats: JPG, PNG, PDF</p>
+                <button class="btn btn-primary mt-2">Choose File</button>
+            </div>
+
+            <div class="grid grid-2 mt-4">
+                <div class="receipt-preview">
+                    <h2 class="mb-3">Extracted Information (AI Prototype)</h2>
+                    <div class="receipt-field">
+                        <span class="field-label">Merchant Name</span>
+                        <span class="field-value">Reliance Fresh</span>
+                    </div>
+                    <div class="receipt-field">
+                        <span class="field-label">Total Amount</span>
+                        <span class="field-value">₹1,250.00</span>
+                    </div>
+                    <div class="receipt-field">
+                        <span class="field-label">Date</span>
+                        <span class="field-value">January 30, 2026</span>
+                    </div>
+                    <div class="receipt-field">
+                        <span class="field-label">Category</span>
+                        <span class="field-value"><span class="badge badge-success">Food & Groceries</span></span>
+                    </div>
+                    <div class="receipt-field">
+                        <span class="field-label">Payment Method</span>
+                        <span class="field-value">Credit Card</span>
+                    </div>
+
+                    <div class="confidence-bar">
+                        <span class="field-label">AI Confidence:</span>
+                        <div class="confidence-fill">
+                            <div class="confidence-fill-inner" style="width: 94%"></div>
+                        </div>
+                        <strong>94%</strong>
+                    </div>
+
+                    <button class="btn btn-primary mt-3" style="width: 100%;">Save to Expenses</button>
+                </div>
+
+                <div class="card">
+                    <h2 class="card-header">Recent Scans</h2>
+                    <div style="border-bottom: 1px solid var(--border-color); padding: 1rem 0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <strong>Starbucks Coffee</strong>
+                                <p class="text-secondary" style="font-size: 0.875rem;">₹420 • Jan 29, 2026</p>
+                            </div>
+                            <span class="badge badge-success">✓ Saved</span>
+                        </div>
+                    </div>
+                    <div style="border-bottom: 1px solid var(--border-color); padding: 1rem 0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <strong>BPCL Fuel Station</strong>
+                                <p class="text-secondary" style="font-size: 0.875rem;">₹2,000 • Jan 28, 2026</p>
+                            </div>
+                            <span class="badge badge-success">✓ Saved</span>
+                        </div>
+                    </div>
+                    <div style="border-bottom: 1px solid var(--border-color); padding: 1rem 0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <strong>Amazon Purchase</strong>
+                                <p class="text-secondary" style="font-size: 0.875rem;">₹3,499 • Jan 27, 2026</p>
+                            </div>
+                            <span class="badge badge-success">✓ Saved</span>
+                        </div>
+                    </div>
+                    <div style="padding: 1rem 0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <strong>Swiggy Order</strong>
+                                <p class="text-secondary" style="font-size: 0.875rem;">₹685 • Jan 26, 2026</p>
+                            </div>
+                            <span class="badge badge-success">✓ Saved</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

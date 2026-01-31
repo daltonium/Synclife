@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SyncLife</title>
+    <link rel="stylesheet" href="../style/main.css">
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #001219 0%, #005f73 50%, #0a9396 100%);
+            padding: 2rem;
+        }
+
+        .auth-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 18, 25, 0.3);
+            width: 100%;
+            max-width: 450px;
+            border: 2px solid #94d2bd;
+        }
+
+        .auth-card h1 {
+            text-align: center;
+            margin-bottom: 0.5rem;
+            color: #005f73;
+        }
+
+        .auth-card p {
+            text-align: center;
+            color: #0a9396;
+            margin-bottom: 2rem;
+        }
+
+        .auth-link {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .auth-link a {
+            color: #0a9396;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .auth-link a:hover {
+            color: #005f73;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <h1>⚡ SyncLife</h1>
+            <p>Welcome back! Please login to continue</p>
+
+            <form>
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" placeholder="Enter your password" required>
+                </div>
+
+                <a href="dashboard.html" class="btn btn-primary" style="width: 100%;">Login</a>
+            </form>
+
+            <div class="auth-link">
+                Don't have an account? <a href="Register.html">Sign Up</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
