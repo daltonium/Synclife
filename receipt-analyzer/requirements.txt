@@ -1,0 +1,18 @@
+# Core Flask Framework
+flask==3.0.0
+werkzeug==3.0.1
+
+# OCR Libraries - Updated for Python 3.14 compatibility
+pytesseract==0.3.13
+pdf2image==1.17.0
+
+# Image Processing
+opencv-python==4.9.0.80
+Pillow>=10.0.0
+numpy>=1.24.0,<2.0.0
+
+# PDF Processing
+PyPDF2==3.0.1
+
+# Utilities
+python-dotenv==1.0.0
