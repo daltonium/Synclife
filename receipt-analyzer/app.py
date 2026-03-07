@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
-from ocr_utils import extract_text_from_image, extract_text_from_image
-from text_utils import text_hash, extract_total_amount, extract_date, extract_merchant_info, extract_line_items
-import io
+from rules import find_suspicious_terms
+from text_utils import (text_hash, extract_total_amount, extract_date,
+                        extract_merchant_info, extract_line_items, extract_amounts)
+from ocr_utils import extract_text_from_pdf_enhanced, extract_text_from_image
+
 
 app = Flask(__name__)
 
@@ -67,18 +69,15 @@ def analyze_receipt():
     return jsonify(receipt_data)
 
 def calculate_confidence(text, total, date, items):
-    """Calculate extraction confidence score"""
     score = 0
-    
     if text and len(text) > 50:
-        score += 25
+        score += 30   # Text extracted
     if total is not None:
-        score += 25
+        score += 35   # Total found (most important)
     if date:
-        score += 25
+        score += 15   # Date is optional bonus
     if items and len(items) > 0:
-        score += 25
-    
+        score += 20   # Line items found
     return score
 
 @app.route("/receipts", methods=["GET"])

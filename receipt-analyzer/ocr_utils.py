@@ -7,63 +7,69 @@ import io
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
+
 def preprocess_image(image):
-    """Enhanced preprocessing for better OCR accuracy"""
-    # Convert PIL to OpenCV format
+    """Smart preprocessing - minimal for clean images, enhanced for poor ones"""
     img_array = np.array(image)
-    
-    # Convert to grayscale
-    gray = cv2.cvtColor(img_array, cv2.COLOR_RGB2GRAY)
-    
-    # Adjust brightness and contrast
-    alpha = 1.5  # Contrast control
-    beta = 10    # Brightness control
-    adjusted = cv2.convertScaleAbs(gray, alpha=alpha, beta=beta)
-    
+
+    # --- Handle different channel formats ---
+    if len(img_array.shape) == 2:
+        gray = img_array
+    elif img_array.shape[2] == 4:
+        rgb = cv2.cvtColor(img_array, cv2.COLOR_RGBA2RGB)
+        gray = cv2.cvtColor(rgb, cv2.COLOR_RGB2GRAY)
+    elif img_array.shape[2] == 3:
+        gray = cv2.cvtColor(img_array, cv2.COLOR_RGB2GRAY)
+    else:
+        gray = np.array(image.convert("L"))
+
+    # --- Check image quality (variance = sharpness/contrast) ---
+    variance = cv2.Laplacian(gray, cv2.CV_64F).var()
+
+    if variance > 500:
+        # HIGH QUALITY IMAGE - minimal processing, don't destroy it
+        # Just upscale slightly if small
+        h, w = gray.shape
+        if w < 1000:
+            scale = 1000 / w
+            gray = cv2.resize(gray, None, fx=scale, fy=scale,
+                              interpolation=cv2.INTER_CUBIC)
+        return Image.fromarray(gray)
+
+    # LOW QUALITY IMAGE - apply full enhancement pipeline
+    # Upscale
+    h, w = gray.shape
+    if w < 1000:
+        scale = 1000 / w
+        gray = cv2.resize(gray, None, fx=scale, fy=scale,
+                          interpolation=cv2.INTER_CUBIC)
+
+    # Mild contrast boost
+    adjusted = cv2.convertScaleAbs(gray, alpha=1.2, beta=5)
+
     # Denoise
     denoised = cv2.fastNlMeansDenoising(adjusted, None, 10, 7, 21)
-    
-    # Deskew (straighten tilted receipts)
-    coords = np.column_stack(np.where(denoised > 0))
-    angle = cv2.minAreaRect(coords)[-1]
-    if angle < -45:
-        angle = 90 + angle
-    (h, w) = denoised.shape
-    center = (w // 2, h // 2)
-    M = cv2.getRotationMatrix2D(center, angle, 1.0)
-    rotated = cv2.warpAffine(denoised, M, (w, h), 
-                             flags=cv2.INTER_CUBIC, 
-                             borderMode=cv2.BORDER_REPLICATE)
-    
-    # Adaptive thresholding for better text clarity
-    thresh = cv2.adaptiveThreshold(rotated, 255, 
-                                   cv2.ADAPTIVE_THRESH_GAUSSIAN_C, 
+
+    # Adaptive threshold
+    thresh = cv2.adaptiveThreshold(denoised, 255,
+                                   cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
                                    cv2.THRESH_BINARY, 11, 2)
-    
     return Image.fromarray(thresh)
 
+
 def extract_text_from_pdf_enhanced(pdf_bytes):
-    """Enhanced OCR with preprocessing"""
-    images = convert_from_bytes(pdf_bytes, dpi=300)  # Higher DPI
+    images = convert_from_bytes(pdf_bytes, dpi=300)
     full_text = ""
-    
     for img in images:
-        # Preprocess each page
         processed_img = preprocess_image(img)
-        
-        # Use Tesseract with custom config for receipts
-        custom_config = r'--oem 3 --psm 6'  # PSM 6: Assume uniform block of text
+        custom_config = r'--oem 3 --psm 6'
         text = pytesseract.image_to_string(processed_img, config=custom_config)
         full_text += text + "\n"
-    
     return full_text
 
+
 def extract_text_from_image(image_bytes):
-    """Extract text from image receipts (JPG, PNG)"""
     img = Image.open(io.BytesIO(image_bytes))
     processed_img = preprocess_image(img)
-    
     custom_config = r'--oem 3 --psm 6'
-    text = pytesseract.image_to_string(processed_img, config=custom_config)
-    
-    return text
+    return pytesseract.image_to_string(processed_img, config=custom_config)
